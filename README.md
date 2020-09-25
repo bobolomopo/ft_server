@@ -19,7 +19,7 @@ Il faudra installer NGINX et modifier le fichier de configuration pour faire fon
 
 Commandes pour créer l'image : "Docker build -t NOMDELIMAGEVOULU ."
 
-Commandes pour lancer l'image :
+[b]Commandes pour lancer l'image :[/b]
 De manière interactive : docker run -it -p 80:80 -p 443:443 NOMDELIMAGEALANCER
 Sans image pour run un container pas encore créé : docker run --name NOMVOULU -it -p 80:80 -p 443:443 debian-buster:slim
 en fond : docker run -d -p 80:80 -p 443:443 NOMDELIMAGEALANCER
