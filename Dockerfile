@@ -4,4 +4,5 @@ COPY srcs/start.sh .
 COPY srcs/nginxconf .
 COPY srcs/config.inc.php .
 COPY srcs/wp-config.php .
-RUN bash start.sh && tail -f /dev/null
+COPY srcs/autoindex.sh .
+ENTRYPOINT bash start.sh && tail -f /dev/null

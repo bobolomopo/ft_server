@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/usr/bin/bash
 #INSTALL PACKAGE
 apt-get update
 apt-get install -y nginx
@@ -19,6 +18,7 @@ echo "                        |CREATING FOLDER|                             "
 echo "======================================================================="
 mkdir -p /var/www/monsite && touch /var/www/monsite/index.php
 mkdir etc/nginx/ssl
+mkdir var/www/monsite/phpmyadmin
 echo "<?php phpinfo(); ?>" >> /var/www/monsite/index.php
 
 #SSL CONFIG
@@ -42,6 +42,7 @@ echo "======================================================================="
 mv nginxconf /etc/nginx/sites-available/monsite
 ln -s /etc/nginx/sites-available/monsite /etc/nginx/sites-enabled/monsite
 rm -rf /etc/nginx/sites-enabled/default
+mv var/www/html/index.nginx-debian.html var/www/monsite/index.html
 
 #MYSQL CONFIG
 echo "======================================================================="
@@ -49,17 +50,17 @@ echo "               			|CONFIG MY SQL|                    "
 echo "======================================================================="
 echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password
-echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password
+echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 
 #PHPMYADMIN CONFIG
 echo "======================================================================="
 echo "                     |CONFIGURATION PHPMYADMIN|                        "
 echo "======================================================================="
 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.5/phpMyAdmin-4.9.5-all-languages.tar.gz
-tar -xvf phpMyAdmin-4.9.5-all-languages.tar.gz
-mv phpMyAdmin-4.9.5-all-languages /usr/share/phpmyadmin /usr/share/phpmyadmin
-mv config.inc.php /usr/share/phpmyadmin/config.inc.php
+tar -xzvf phpMyAdmin-4.9.5-all-languages.tar.gz --strip-components 1 -C /var/www/monsite/phpmyadmin
+mv config.inc.php /var/www/monsite/phpmyadmin/
+rm /var/www/monsite/phpmyadmin/config.sample.inc.php
 
 #WORDPRESS CONFIG
 echo "======================================================================="

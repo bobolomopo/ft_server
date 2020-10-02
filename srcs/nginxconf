@@ -14,11 +14,11 @@ server{
     ssl_certificate_key /etc/nginx/ssl/monsite+3-key.pem;
 
     root /var/www/monsite;
-    index index.html index.htm index.php;
 
     server_name monsite localhost;
 
     location / {
+        autoindex on;
         try_files $uri $uri/ =404;
     }
 
