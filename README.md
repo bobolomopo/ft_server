@@ -29,4 +29,6 @@ service nginx start
 service mysql start
 service php7.3-fpm start
 
+Pour rendre l'autoindex faisable : absence de fichier index.html et autoindex on; ou autoindex off; en dessous de location /. Rajout d'un script shell qui modifie on ou off et restart nginx.
+
 remplacer start par reload ou restart selon le cas.
