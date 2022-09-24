@@ -1,6 +1,16 @@
-ft_server
-projet ft_server école 19
-Projet de découverte à l'administration système et introduction à Docker.
+# Ft_server
+
+## Description
+
+Ce sujet a pour but de vous initier aux bases de l’administration système et réseau. Il vous permettra de procéder à l'installation d'un serveur web complet, a l'aide d'une technologie de déploiement nommée Docker.
+
+## Resultats
+
+![](images/resultats.png)
+
+## Notes
+
+Projet très important qui m'a fait découvrir docker et m'a initié à son utilisation.
 
 Comment faire ft_server
 
